@@ -1,0 +1,34 @@
++---------------+
+| Boas práticas |
++---------------+
+1. Para views: criar uma pasta com o nome do controller que irá chamar esta view.
+
+
++------------------------------+
+| Incluir view dentro de outra |
++------------------------------+
+Utilizar o método do CodeIgniter4 include.
+Exemplo: $this->include('lugar_da_view');
+
+Caso precise passar variáveis pelo include, utilize:
+    $this->setData(compact('var1', 'var2'))->include('Templates/vw_header');
+
+
++---------------------------------------+
+| Criar um migration p o banco de dados |
++---------------------------------------+
+Rodar o comando dentro do root: php spark make:migration CreateNomeTabela.
+Configurar arquivo gerado na pasta raiz/Database/Migrations
+
++-----------------+
+| Rodar o migrate |
++-----------------+
+php spark serve migrate -> Cria tabela
+php spark serve migrate:rollback -> Drop tabela
+
++-----------------------------------------------------+
+| Verificar se a conexão com o banco de dados ocorreu |
++-----------------------------------------------------+
+private object $db;
+$this->db = db_connect();
+$this->db->listTables();
